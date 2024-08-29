@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
+}
+
+nav{
+    max-width: 900px;
+    margin: auto;
+    background-color: rgba(252, 252, 252, 1);
+    font-size: 20px;
+    margin-top: 50px;
+    border-radius: 50px;
+}
+.menu-horizontal{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50px;
+}
+.menu-horizontal > li > a{
+    display: block;
+    padding: 15px 20px;
+    color: rgb(0, 4, 255);
+    text-decoration: none;
+}
+.menu-horizontal > li:hover{
+    background-color: rgb(207, 194, 8);
+}
+.menu-vertical{
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: rgba(0,0,0,.5);
+}
+.menu-horizontal li:hover .menu-vertical{
+    display: block;
+}
+.menu-vertical li:hover{
+    background-color: black;
+}
+.menu-vertical li a{
+    display: block;
+    color: white;
+    padding: 15px 15px 15px 15px;
+    text-decoration: none;
+}
+.texto_1{
+    background-color: rgba(255, 255, 255, 0.75);
+    color: rgb(0, 0, 0);
+    max-width: 900px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+a{color: rgb(0, 60, 255)}
+.lista_inicial{list-style: none;}
+
+.pie-de-pagina{
+    width: 100%;
+    background-color: #ffffff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.pie-de-pagina .grupo-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+.pie-de-pagina .grupo-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.pie-de-pagina .grupo-1 .box figure img{
+    width: 250px;
+}
+.pie-de-pagina .grupo-1 .box h2{
+    color: rgb(0, 225, 255);
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.pie-de-pagina .grupo-1 .box p{
+    color: #0a0a0a;
+    margin-bottom: 10px;
+}
+.pie-de-pagina .grupo-1 .red-social img{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #fcfcfc;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.pie-de-pagina .grupo-1 .red-social a:hover{
+color: rgb(120, 93, 243);
+}
+
+table p{
+    border: 2px solid black;
+    text-align: center;
+    cursor: default;
+}
+
+.menu-horizontal{
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+}

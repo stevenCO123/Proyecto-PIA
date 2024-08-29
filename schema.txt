@@ -1,0 +1,61 @@
+
+
+CREATE TABLE Lugares (id integer PRIMARY KEY AUTOINCREMENT,
+                     descripcion text varchar(100));
+ 
+ CREATE TABLE TIpos (id integer PRIMARY KEY AUTOINCREMENT,
+                     descripcion text varchar(50));
+                     
+CREATE TABLE Estados (id integer PRIMARY KEY AUTOINCREMENT,
+                     descripcion text varchar(50));
+                     
+CREATE TABLE Condicion (id integer PRIMARY KEY AUTOINCREMENT,
+                     descripcion text varchar(50));
+                     
+Create table inventario (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        nombre_art text VARCHAR (12) ,
+                         cantidad INTEGER,
+                         id_lugar INTEGER,
+                         id_tipo INTEGER,
+                         id_condicion INTEGER,
+                         id_estado INTEGER,
+                         FOREIGN KEY (id_lugar) REFERENCES Lugares(id),
+                        FOREIGN KEY (id_tipo) REFERENCES TIpos(id),
+                        FOREIGN KEY (id_condicion) REFERENCES Condicion(id),
+                        FOREIGN KEY (id_estado) REFERENCES Estados(id));
+
+Create table Usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                         documento INTEGER,
+                         codigo INTeger,
+                         clave INTeger,
+			);
+                        
+Create table docentes (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       imagen text,
+                       nombre text,
+                       apellido text,
+                       id_usuario integer,
+                      FOREIGN KEY (id_usuario) REFERENCES Usuarios(id));
+
+CREATE TABLE encargados (id integer PRIMARY KEY AUTOINCREMENT,
+                        id_docentes integer,
+                        id_lugares integer,
+                        FOREIGN KEY (id_docentes)REFERENCES docentes(id),
+                        FOREIGN KEY (id_lugares)REFERENCES Lugares(id));
+
+CREATE TABLE Prestamos (id integer PRIMARY KEY AUTOINCREMENT,
+                       id_prestador integer,
+                       id_recibe integer,
+                       id_articulo integer,
+                       cantidad integer,
+                       id_estado integer,
+                       descripcion text varchar(100),
+                       fecha_prestado integer,
+                       fecha_devuelta_propuesta integer, 
+                       fecha_devuelta_real integer,
+                       FOREIGN KEY (id_prestador)REFERENCES docentes(id),
+                        FOREIGN KEY (id_recibe)REFERENCES docentes(id)
+                       FOREIGN KEY (id_articulo)REFERENCES inventario(id),
+                        FOREIGN KEY (id_estado)REFERENCES Estados(id));
+
+

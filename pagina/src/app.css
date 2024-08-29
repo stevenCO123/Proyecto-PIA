@@ -1,0 +1,89 @@
+.campo_de_informacion {
+    border: 2px solid #000000;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 600px;
+    border-color: #E4E4E4;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url(https://admin.lola.edu.co/utilidades/lola.jpg);
+    background-size: 100%;
+    background-size: cover;
+}
+
+.texto1 {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: normal;
+}
+.titulo{
+    font-weight: bold;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+
+.datos_usuario{
+    background-color:#FFF;border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    border: 13px solid #ffffff;
+}
+
+table {
+    border: 0;
+    border-collapse: separate;
+    text-indent: initial;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    color: -internal-quirk-inherit;
+    text-align: center;
+    border-spacing: 2px;
+    white-space: normal;
+    font-variant: normal;
+}
+
+.textbox {
+    border: 1px solid #a6d3f9;
+    background: #FFF;
+    padding: 7px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-family: 'calibri';
+    font-size: 16px;
+    color: #000;
+}
+
+input[type=button] {
+    border: none;
+    background: #498aeb;
+    color: #f2f2f2;
+    padding: 9px;
+    font-size: 16px;
+    font-family: 'calibri';
+    font-weight: bold;
+    border-radius: 15px;
+    position: relative;
+    width: 100px;
+    cursor : pointer;
+    transition: all 500ms ease;
+}
+
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
