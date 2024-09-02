@@ -1,6 +1,5 @@
-*{
+body{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;;
 }
@@ -21,7 +20,9 @@ nav{
     border-width: 2px;
     border-style: solid;
     border-radius: 50px;
+    padding: 0px;
 }
+
 .menu-horizontal > li > a{
     display: block;
     padding: 15px 20px;
@@ -37,6 +38,7 @@ nav{
     list-style: none;
     width: 200px;
     background-color: rgba(0,0,0,.5);
+    padding: 0px;
 }
 .menu-horizontal li:hover .menu-vertical{
     display: block;
@@ -62,6 +64,7 @@ a{color: rgb(0, 60, 255)}
 .lista_inicial{list-style: none;}
 
 .pie-de-pagina{
+    margin-block-start: 20px;
     width: 100%;
     background-color: #ffffff;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -113,6 +116,7 @@ table p{
     border: 2px solid black;
     text-align: center;
     cursor: default;
+
 }
 
 .menu-horizontal{

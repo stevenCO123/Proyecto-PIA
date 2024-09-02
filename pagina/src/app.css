@@ -6,7 +6,7 @@
     background-color: rgba(255, 255, 255, 0.9);
     width: 600px;
     border-color: #E4E4E4;
-    margin: 0 auto;
+    margin: auto;
     top: 0;
     left: 0;
 }
@@ -68,7 +68,7 @@ table {
     color: #000;
 }
 
-input[type=button] {
+input[type=submit] {
     border: none;
     background: #498aeb;
     color: #f2f2f2;
@@ -86,4 +86,9 @@ input[type=button] {
 img {
     overflow-clip-margin: content-box;
     overflow: clip;
+}
+span{
+padding: auto;
+margin: auto;
+
 }

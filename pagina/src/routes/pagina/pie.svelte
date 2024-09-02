@@ -13,8 +13,8 @@
         <div class="box">
             <h2>Sobre Nosotros</h2>
             <p>
-                somos estudiantes de la institucion educativa Lola Gonzalez con
-                un simple proyecto de manejo de inventario
+                Somos estudiantes de la institucion educativa Lola Gonzalez con
+                un simple proyecto de manejo de inventario.
             </p>
         </div>
         <div class="box">
@@ -41,6 +41,13 @@
                         alt="github"
                     /></a
                 >
+                <br>
+                <a href="https://www.mundogaturro.com">
+                    <img
+                        src="https://res.cloudinary.com/dnontz2gc/image/upload/v1723487847/img%20pia/pato.gif"
+                        alt="pato"
+                    />
+                </a>
             </div>
         </div>
     </div>

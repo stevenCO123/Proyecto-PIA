@@ -1,45 +1,31 @@
-<script>
-    import { page } from "$app/stores";
-</script>
-
 <header>
     <nav>
         <ul class="menu-horizontal">
-            <li
-                aria-current={$page.url.pathname === "/pagina/inicio"
-                    ? "page"
-                    : undefined}
-            >
-                <a href="/pagina/inicio">inicio</a>
+            <li>
+                <a href="/pagina/inicio"
+                    ><img
+                        src="https://res.cloudinary.com/dnontz2gc/image/upload/v1723574291/img%20pia/house.png"
+                        alt="casa"
+                        width="50px"
+                        height="50px"
+                    /></a
+                >
             </li>
-            <li
-                aria-current={$page.url.pathname === "/pagina/inventario"
-                    ? "page"
-                    : undefined}
-            >
-                <a href="/pagina/inventario">inventario</a>
-            </li>
-            <li
-                aria-current={$page.url.pathname === "/pagina/acerca-de"
-                    ? "page"
-                    : undefined}
-            >
-                <a href="/pagina/acerca-de">acerca de</a>
+            <li><a href="/pagina/inventario">Inventario</a></li>
+            <li>
+                <a href="/pagina/acerca-de">Información</a>
                 <ul class="menu-vertical">
-                    <li
-                        aria-current={$page.url.pathname ===
-                        "/pagina/actualizaciones"
-                            ? "page"
-                            : undefined}
-                    >
-                        <a href="/pagina/actualizaciones">proximas updates</a>
+                    <li>
+                        <a href="/pagina/actualizaciones"
+                            >Proximas Actualizaciónes</a
+                        >
                     </li>
                 </ul>
             </li>
             <li>
                 <a href="../"
                     ><img
-                        src="https://media.tenor.com/zY0KJ5TLY24AAAAC/pato-bailando.gif"
+                        src="https://cdn-icons-png.flaticon.com/512/61/61208.png"
                         alt="pato"
                         width="50px"
                         height="50px"
