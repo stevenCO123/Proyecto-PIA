@@ -46,16 +46,25 @@
                     <span><img src="https://admin.lola.edu.co/utilidades/escudo.gif" alt="logo-lola" width="292" height="294"></span>
                 </td>
                 <td>
-                    <form id="formulario" style="align-content: center;" on:submit|preventDefault={vereficar}>
+                    <form id="formulario" style="align-content: center;" method="post" action="?/conectar">
                         <div class="datos_usuario">
+                            <label>
+                                codigo
                             <input id="codigo" type="text" class="textbox" autocomplete="off" placeholder="codigo"
-                                size="9" bind:value={codigo}>
+                                size="9" name= "codigo">
+                            </label>
                             <br>
+                            <label>
+                                documento
                             <input id="documento" type="text" class="textbox" autocomplete="off"
-                                placeholder="documento" size="9" bind:value={documento}>
+                                placeholder="documento" size="9" name ="documento">
+                            </label>
                             <br>
+                            <label>
+                                clave
                             <input id="clave" type="password" class="textbox" autocomplete="off" placeholder="clave"
-                                size="9" bind:value={clave}>
+                                size="9" name="clave">
+                            </label>
                             <br>
                             <input id="boton" type="submit" value="ingresar">
                         </div>
