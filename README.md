@@ -1,5 +1,11 @@
-"# AUDM" 
-"AUDM (Administración Universal De Materiales) es un proyecto que busca crear una página web con la cual no solo la Institución Educativa Lola Gonzales sino los profesores puedan acceder al inventario completo de materiales  tanto móviles e inmóviles dentro de los salones de clase y el resto de instalaciones pertenecientes a la institución (coordinación, laboratorio, biblioteca, gimnasio, tienda, papelería, enfermería, restaurante, etc…) en busca de saber que falta o saber con qué cuentan desde un inicio.
+AUDM
+
+Administración
+Universal
+De
+Materiales
+ 
+es un proyecto que busca crear una página web con la cual no solo la Institución Educativa Lola Gonzales sino los profesores puedan acceder al inventario completo de materiales  tanto móviles e inmóviles dentro de los salones de clase y el resto de instalaciones pertenecientes a la institución (coordinación, laboratorio, biblioteca, gimnasio, tienda, papelería, enfermería, restaurante, etc…) en busca de saber que falta o saber con qué cuentan desde un inicio.
 Problema o necesidad. 
 La institución tiene el problema de que carece de materiales para remplazar en las instalaciones sin conocer de manera certera que deben remplazar (lámparas, sillas, mesas, marcadores, borradores, basuras, libros, computadores, materiales del laboratorio  etc…) causando que la integridad de la escuela se vea afectada de manera drástica y la calidad de la institución se perjudique tanto académicamente como disciplinariamente 
 
@@ -15,4 +21,3 @@ Esencia de lo que se espera del proyecto, donde se encierran las metas máximas.
 Objetivos específicos
 Nivel de detalle mayor y complementario con el general. Pueden ser metas parciales.
 
-"
