@@ -28,7 +28,7 @@ export const Inventario = sqliteTable("inventario",{
     cantidad: integer ("cantidad"),
     id_lugar: integer ("id_lugar").references(() => Lugares.id),
     id_tipo: integer ("id_tipo").references(() => Tipos.id),
-    id_condicion: integer ("id_conficion").references(() => Condicion.id),
+    id_condicion: integer ("id_condicion").references(() => Condicion.id),
     id_estado: integer ("id_estado").references(() => Estados.id)
 });
 

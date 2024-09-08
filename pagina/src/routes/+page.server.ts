@@ -1,21 +1,8 @@
 import { db } from "$lib/database";
 import { Usuarios } from "$lib/database/schema";
-import { eq, and } from "drizzle-orm";
-import { redirect } from "@sveltejs/kit";
+import { eq, and} from "drizzle-orm";
+import { fail, redirect } from "@sveltejs/kit";
 
-
-export const load = async () => {
-    const result = await db
-        .select({
-            id: Usuarios.id,
-            codigo: Usuarios.codigo,
-            documento: Usuarios.documento,
-            clave: Usuarios.clave
-        })
-        .from(Usuarios)
-
-    return { result };
-}
 
 export const actions = {
     conectar: async ({ cookies, request }) => {
@@ -38,18 +25,16 @@ export const actions = {
                 eq(Usuarios.clave, docu_form)
             ))
 
-
-        for (const item of result) {
-            if (
-                codi_form === item.codigo &&
-                docu_form === item.documento &&
-                clav_form === item.clave
-            ) {
-
-                cookies.set('ident', item.id, { path: '/'});
-                window.location.assign("/pagina/inicio");
-
-            }
+        if (result.length === 1) {
+            const item = result[0];
+            cookies.set('ident', item.id.toString(), { path: '/' });
+            return redirect(302, '/pagina/inicio');
         }
+        else {
+            return fail(402, {
+                no_found: true
+            });
+        }
+
     }
 }

@@ -1,29 +1,6 @@
 <script lang="ts">
     import '../app.css'
-
-    export let data;
-
-	let codigo = '';
-	let documento = '';
-	let clave = '';
-
-	function vereficar() {
-		for (const item of data.result) {
-			if (
-				parseInt(clave) === item.clave &&
-				parseInt(documento) === item.documento &&
-				parseInt(codigo) === item.codigo
-			) {
-				window.location.assign("/pagina/inicio");
-				document.cookie = "ident" + "=" + (item.id || "") + "; path=/";
-			}
-            else {
-                
-            }
-		}
-	}
-
-
+	export let form;
 </script>
 
 
@@ -50,23 +27,24 @@
                         <div class="datos_usuario">
                             <label>
                                 codigo
-                            <input id="codigo" type="text" class="textbox" autocomplete="off" placeholder="codigo"
+                            <input id="codigo" type="text" class="textbox" autocomplete="off" placeholder="EJ :1234"
                                 size="9" name= "codigo">
                             </label>
                             <br>
                             <label>
                                 documento
                             <input id="documento" type="text" class="textbox" autocomplete="off"
-                                placeholder="documento" size="9" name ="documento">
+                                placeholder="EJ:123456789" size="9" name ="documento">
                             </label>
                             <br>
                             <label>
                                 clave
-                            <input id="clave" type="password" class="textbox" autocomplete="off" placeholder="clave"
+                            <input id="clave" type="password" class="textbox" autocomplete="off" placeholder="EJ:1234"
                                 size="9" name="clave">
                             </label>
                             <br>
                             <input id="boton" type="submit" value="ingresar">
+                            {#if form?.no_found}<p>no se apodido ingresar con los datos ingresados, verifiquelos y intente de nuevo</p>{/if}
                         </div>
                     </form>
                 </td>
