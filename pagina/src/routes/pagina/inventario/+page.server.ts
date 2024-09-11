@@ -1,28 +1,28 @@
 import { db } from "$lib/database";
-import { Condicion, Estados, Inventario, Lugares, Tipos } from '$lib/database/schema'
+import { condicion, estados, inventario, lugares, tipos } from '$lib/database/schema'
 import { eq, and, like } from "drizzle-orm";
-import { fail} from "@sveltejs/kit";
+import { fail } from "@sveltejs/kit";
 
 export const load = async () => {
     const result = await db
         .select({
-            id: Inventario.id,
-            nombre_art: Inventario.nombre_art,
-            cantidad: Inventario.cantidad,
-            id_lugar: Inventario.id_lugar,
-            id_tipo: Inventario.id_tipo,
-            id_condicion: Inventario.id_condicion,
-            id_estado: Inventario.id_estado,
-            lugar_des: Lugares.descripcion,
-            tipo_des: Tipos.descripcion,
-            condicion_des: Condicion.descripcion,
-            estado_des: Estados.descripcion
+            id: inventario.id,
+            nombre_art: inventario.nombreArt,
+            cantidad: inventario.cantidad,
+            id_lugar: inventario.idLugar,
+            id_tipo: inventario.idTipo,
+            id_condicion: inventario.idCondicion,
+            id_estado: inventario.idEstado,
+            lugar_des: lugares.descripcion,
+            tipo_des: tipos.descripcion,
+            condicion_des: condicion.descripcion,
+            estado_des: estados.descripcion
         })
-        .from(Inventario)
-        .fullJoin(Lugares, eq(Lugares.id, Inventario.id))
-        .fullJoin(Tipos, eq(Tipos.id, Inventario.id))
-        .fullJoin(Condicion, eq(Condicion.id, Inventario.id))
-        .fullJoin(Estados, eq(Estados.id, Inventario.id))
+        .from(inventario)
+        .leftJoin(lugares, eq(lugares.id, inventario.idLugar))
+        .leftJoin(tipos, eq(tipos.id, inventario.idTipo))
+        .leftJoin(condicion, eq(condicion.id, inventario.idCondicion))
+        .leftJoin(estados, eq(estados.id, inventario.idEstado))
 
     return { result };
 }
@@ -31,61 +31,49 @@ export const actions = {
     filtrar: async ({ request }) => {
         const data = await request.formData();
 
-        let sele_lugar = data.get("lugares");
-        let sele_tipo = data.get("tipos");
-        let sele_condicion = data.get("condiciones");
-        let sele_estado = data.get("estados");
+        let sele_lugar = data.get('Lugar');
+        let sele_tipo = data.get('Tipo');
+        let sele_condicion = data.get('Condicion');
+        let sele_estado = data.get('Estado');
 
-        if (!sele_lugar) {
-            sele_lugar = '%%'
-        }
-
-        if (!sele_tipo) {
-            sele_tipo = '%%'
-        }
-
-        if (!sele_condicion) {
-            sele_condicion = '%%'
-        }
-
-        if (!sele_estado) {
-            sele_estado = '%%'
-        }
-
-        const result = await db
+        const filtro = await db
             .select({
-                id: Inventario.id,
-                nombre_art: Inventario.nombre_art,
-                cantidad: Inventario.cantidad,
-                id_lugar: Inventario.id_lugar,
-                id_tipo: Inventario.id_tipo,
-                id_condicion: Inventario.id_condicion,
-                id_estado: Inventario.id_estado,
-                lugar_des: Lugares.descripcion,
-                tipo_des: Tipos.descripcion,
-                condicion_des: Condicion.descripcion,
-                estado_des: Estados.descripcion
+                id: inventario.id,
+                nombre_art: inventario.nombreArt,
+                cantidad: inventario.cantidad,
+                id_lugar: inventario.idLugar,
+                id_tipo: inventario.idTipo,
+                id_condicion: inventario.idCondicion,
+                id_estado: inventario.idEstado,
+                lugar_des: lugares.descripcion,
+                tipo_des: tipos.descripcion,
+                condicion_des: condicion.descripcion,
+                estado_des: estados.descripcion
             })
-            .from(Inventario)
-            .fullJoin(Lugares, eq(Lugares.id, Inventario.id))
-            .fullJoin(Tipos, eq(Tipos.id, Inventario.id))
-            .fullJoin(Condicion, eq(Condicion.id, Inventario.id))
-            .fullJoin(Estados, eq(Estados.id, Inventario.id))
+            .from(inventario)
+            .leftJoin(lugares, eq(lugares.id, inventario.idLugar))
+            .leftJoin(tipos, eq(tipos.id, inventario.idTipo))
+            .leftJoin(condicion, eq(condicion.id, inventario.idCondicion))
+            .leftJoin(estados, eq(estados.id, inventario.idEstado))
 
             .where(and(
-                like(Inventario.id_lugar, sele_lugar),
-                like(Inventario.id_tipo, sele_tipo),
-                like(Inventario.id_condicion, sele_condicion),
-                like(Inventario.id_estado, sele_estado)
+                like(inventario.idLugar, sele_lugar),
+                like(inventario.idTipo, sele_tipo),
+                like(inventario.idCondicion, sele_condicion),
+                like(inventario.idEstado, sele_estado)
+
             ))
 
-            if(result && result.length !== 0){
-                return {filtracion : true}
-            }
-            else{
-                return fail(402, {
-                    no_found: true
-                });
-            }
+        if (filtro && filtro.length !== 0) {
+            return { filtro, filtracion: true }
+        }
+        else {
+            return fail(402, {
+                no_found: true
+            });
+        }
+    },
+    quitar: async () => {
+        return {filtracion: false}
     }
 }

@@ -1,5 +1,5 @@
 import { db } from "$lib/database";
-import { Usuarios } from "$lib/database/schema";
+import { usuarios } from "$lib/database/schema";
 import { eq, and} from "drizzle-orm";
 import { fail, redirect } from "@sveltejs/kit";
 
@@ -13,16 +13,16 @@ export const actions = {
 
         const result = await db
             .select({
-                id: Usuarios.id,
-                codigo: Usuarios.codigo,
-                documento: Usuarios.documento,
-                clave: Usuarios.clave
+                id: usuarios.id,
+                codigo: usuarios.codigo,
+                documento: usuarios.documento,
+                clave: usuarios.clave
             })
-            .from(Usuarios)
+            .from(usuarios)
             .where(and(
-                eq(Usuarios.codigo, clav_form),
-                eq(Usuarios.documento, codi_form),
-                eq(Usuarios.clave, docu_form)
+                eq(usuarios.codigo, clav_form),
+                eq(usuarios.documento, codi_form),
+                eq(usuarios.clave, docu_form)
             ))
 
         if (result.length === 1) {

@@ -15,7 +15,7 @@ export const load = async ({cookies}) => {
         apellido: docentes.apellido
       })
       .from(docentes)
-      .where(eq(docentes.id_usuario,parseInt(usuario)))
+      .where(eq(docentes.idUsuario,parseInt(usuario)))
   
     return { asig };
   }

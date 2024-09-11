@@ -1,0 +1,501 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "6",
+  "dialect": "sqlite",
+  "tables": {
+    "Lugares": {
+      "name": "Lugares",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "descripcion": {
+          "autoincrement": false,
+          "name": "descripcion",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "TIpos": {
+      "name": "TIpos",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "descripcion": {
+          "autoincrement": false,
+          "name": "descripcion",
+          "type": "text(50)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Estados": {
+      "name": "Estados",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "descripcion": {
+          "autoincrement": false,
+          "name": "descripcion",
+          "type": "text(50)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Condicion": {
+      "name": "Condicion",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "descripcion": {
+          "autoincrement": false,
+          "name": "descripcion",
+          "type": "text(50)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "inventario": {
+      "name": "inventario",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "nombre_art": {
+          "autoincrement": false,
+          "name": "nombre_art",
+          "type": "text(12)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cantidad": {
+          "autoincrement": false,
+          "name": "cantidad",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_lugar": {
+          "autoincrement": false,
+          "name": "id_lugar",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_tipo": {
+          "autoincrement": false,
+          "name": "id_tipo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_condicion": {
+          "autoincrement": false,
+          "name": "id_condicion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_estado": {
+          "autoincrement": false,
+          "name": "id_estado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "inventario_id_estado_Estados_id_fk": {
+          "name": "inventario_id_estado_Estados_id_fk",
+          "tableFrom": "inventario",
+          "tableTo": "Estados",
+          "columnsFrom": [
+            "id_estado"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "inventario_id_condicion_Condicion_id_fk": {
+          "name": "inventario_id_condicion_Condicion_id_fk",
+          "tableFrom": "inventario",
+          "tableTo": "Condicion",
+          "columnsFrom": [
+            "id_condicion"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "inventario_id_tipo_TIpos_id_fk": {
+          "name": "inventario_id_tipo_TIpos_id_fk",
+          "tableFrom": "inventario",
+          "tableTo": "TIpos",
+          "columnsFrom": [
+            "id_tipo"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "inventario_id_lugar_Lugares_id_fk": {
+          "name": "inventario_id_lugar_Lugares_id_fk",
+          "tableFrom": "inventario",
+          "tableTo": "Lugares",
+          "columnsFrom": [
+            "id_lugar"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Prestamos": {
+      "name": "Prestamos",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "id_prestador": {
+          "autoincrement": false,
+          "name": "id_prestador",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_recibe": {
+          "autoincrement": false,
+          "name": "id_recibe",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_articulo": {
+          "autoincrement": false,
+          "name": "id_articulo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cantidad": {
+          "autoincrement": false,
+          "name": "cantidad",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_estado": {
+          "autoincrement": false,
+          "name": "id_estado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "descripcion": {
+          "autoincrement": false,
+          "name": "descripcion",
+          "type": "text(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_prestado": {
+          "autoincrement": false,
+          "name": "fecha_prestado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_devuelta_propuesta": {
+          "autoincrement": false,
+          "name": "fecha_devuelta_propuesta",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_devuelta_real": {
+          "autoincrement": false,
+          "name": "fecha_devuelta_real",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "Prestamos_id_estado_Estados_id_fk": {
+          "name": "Prestamos_id_estado_Estados_id_fk",
+          "tableFrom": "Prestamos",
+          "tableTo": "Estados",
+          "columnsFrom": [
+            "id_estado"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Prestamos_id_articulo_inventario_id_fk": {
+          "name": "Prestamos_id_articulo_inventario_id_fk",
+          "tableFrom": "Prestamos",
+          "tableTo": "inventario",
+          "columnsFrom": [
+            "id_articulo"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Prestamos_id_recibe_docentes_id_fk": {
+          "name": "Prestamos_id_recibe_docentes_id_fk",
+          "tableFrom": "Prestamos",
+          "tableTo": "docentes",
+          "columnsFrom": [
+            "id_recibe"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Prestamos_id_prestador_docentes_id_fk": {
+          "name": "Prestamos_id_prestador_docentes_id_fk",
+          "tableFrom": "Prestamos",
+          "tableTo": "docentes",
+          "columnsFrom": [
+            "id_prestador"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "encargados": {
+      "name": "encargados",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "id_docentes": {
+          "autoincrement": false,
+          "name": "id_docentes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_lugares": {
+          "autoincrement": false,
+          "name": "id_lugares",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "encargados_id_lugares_Lugares_id_fk": {
+          "name": "encargados_id_lugares_Lugares_id_fk",
+          "tableFrom": "encargados",
+          "tableTo": "Lugares",
+          "columnsFrom": [
+            "id_lugares"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "encargados_id_docentes_docentes_id_fk": {
+          "name": "encargados_id_docentes_docentes_id_fk",
+          "tableFrom": "encargados",
+          "tableTo": "docentes",
+          "columnsFrom": [
+            "id_docentes"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "Usuarios": {
+      "name": "Usuarios",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "documento": {
+          "autoincrement": false,
+          "name": "documento",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "codigo": {
+          "autoincrement": false,
+          "name": "codigo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "clave": {
+          "autoincrement": false,
+          "name": "clave",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {}
+    },
+    "docentes": {
+      "name": "docentes",
+      "columns": {
+        "id": {
+          "autoincrement": true,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "imagen": {
+          "autoincrement": false,
+          "name": "imagen",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nombre": {
+          "autoincrement": false,
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "apellido": {
+          "autoincrement": false,
+          "name": "apellido",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_usuario": {
+          "autoincrement": false,
+          "name": "id_usuario",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "docentes_id_usuario_Usuarios_id_fk": {
+          "name": "docentes_id_usuario_Usuarios_id_fk",
+          "tableFrom": "docentes",
+          "tableTo": "Usuarios",
+          "columnsFrom": [
+            "id_usuario"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
