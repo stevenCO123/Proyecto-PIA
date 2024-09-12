@@ -35,6 +35,7 @@ export const actions = {
         let sele_tipo = data.get('Tipo');
         let sele_condicion = data.get('Condicion');
         let sele_estado = data.get('Estado');
+        let bar_search ='%' + data.get('bar_search') + '%';
 
         const filtro = await db
             .select({
@@ -57,6 +58,7 @@ export const actions = {
             .leftJoin(estados, eq(estados.id, inventario.idEstado))
 
             .where(and(
+                like(inventario.nombreArt, bar_search),
                 like(inventario.idLugar, sele_lugar),
                 like(inventario.idTipo, sele_tipo),
                 like(inventario.idCondicion, sele_condicion),
@@ -64,7 +66,7 @@ export const actions = {
 
             ))
 
-        if (filtro && filtro.length !== 0) {
+        if (filtro && filtro.length > 0) {
             return { filtro, filtracion: true }
         }
         else {

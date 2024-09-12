@@ -7,7 +7,21 @@
     <div class="texto_1">
         <center>
             <h1>en desarrollo</h1>
-            <form id="filtros" style="align-content: center;" method="post" action="?/filtrar">
+            <form
+                id="filtros"
+                style="align-content: center;"
+                method="post"
+                action="?/filtrar"
+            >
+                <label for="Nombre">
+                    Nombre:
+                    <input
+                        id="bar_search"
+                        name="bar_search"
+                        type="search"
+                        placeholder="Ejemplo: silla"
+                    />
+                </label>
                 <label for="Lugar">
                     Lugar:
                     <select name="Lugar" id="Lugar">
@@ -56,12 +70,12 @@
                     </select>
                 </label>
 
-                <input id="boton" type="submit" value="ingresar">
+                <input id="boton" type="submit" value="ingresar" />
             </form>
 
             {#if form?.filtracion}
                 <form action="?/quitar">
-                    <input id="boton" type="submit" value="quitar filtro">
+                    <input id="boton" type="submit" value="quitar filtro" />
                 </form>
             {/if}
 
@@ -79,18 +93,19 @@
                         <td>condicion del articulo</td>
                         <td>estado de prestamo</td>
                     </tr>
+
                     {#if form?.filtracion}
-                    {#each form?.filtro as item}
-                        <tr>
-                            <td>{@html item.nombre_art}</td>
-                            <td>{@html item.cantidad}</td>
-                            <td>{@html item.lugar_des}</td>
-                            <td>{@html item.tipo_des}</td>
-                            <td>{@html item.condicion_des}</td>
-                            <td>{@html item.estado_des}</td>
-                        </tr>
-                    {/each}
-                {/if}
+                        {#each form?.filtro as item}
+                            <tr>
+                                <td>{@html item.nombre_art}</td>
+                                <td>{@html item.cantidad}</td>
+                                <td>{@html item.lugar_des}</td>
+                                <td>{@html item.tipo_des}</td>
+                                <td>{@html item.condicion_des}</td>
+                                <td>{@html item.estado_des}</td>
+                            </tr>
+                        {/each}
+                    {/if}
                     {#if !form?.filtracion}
                         {#each data.result as item}
                             <tr>
