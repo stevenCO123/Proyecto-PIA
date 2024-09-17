@@ -23,15 +23,15 @@
                 <tbody>
                     <tr>
                         <td>
-                            <span
-                                ><img
+                            <span>
+                                <img
                                     id="img_usuario"
                                     alt="imagen usuario"
                                     width="220"
                                     height="200"
                                     src={img_usuario}
-                                /></span
-                            >
+                                />
+                            </span>
                         </td>
                         <td>
                             <p id="name_full_usuario">

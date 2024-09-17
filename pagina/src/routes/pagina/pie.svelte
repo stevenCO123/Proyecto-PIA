@@ -35,7 +35,7 @@
                         alt="instagram"
                     /></a
                 >
-                <a href="https://github.com/stevenCO123/AUDM">
+                <a href="https://github.com/stevenCO123/Proyecto-PIA">
                     <img
                         src="https://pngimg.com/uploads/github/github_PNG40.png"
                         alt="github"
