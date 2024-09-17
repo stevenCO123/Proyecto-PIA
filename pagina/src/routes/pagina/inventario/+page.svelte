@@ -6,7 +6,7 @@
 <section>
     <div class="texto_1">
         <center>
-            <h1>en desarrollo</h1>
+            <br>
             <form
                 id="filtros"
                 style="align-content: center;"
@@ -22,6 +22,7 @@
                         placeholder="Ejemplo: silla"
                     />
                 </label>
+                <br>
                 <label for="Lugar">
                     Lugar:
                     <select name="Lugar" id="Lugar">

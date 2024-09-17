@@ -11,9 +11,9 @@
                     /></a
                 >
             </li>
-            <li><a href="/pagina/inventario">Inventario</a></li>
+            <li><a class="inv" href="/pagina/inventario">Inventario</a></li>
             <li>
-                <a href="/pagina/acerca-de">Información</a>
+                <a  class="inv" href="/pagina/acerca-de">Información</a>
                 <ul class="menu-vertical">
                     <li>
                         <a href="/pagina/actualizaciones"
