@@ -31,11 +31,11 @@ export const actions = {
     filtrar: async ({ request }) => {
         const data = await request.formData();
 
-        let sele_lugar = data.get('Lugar');
-        let sele_tipo = data.get('Tipo');
-        let sele_condicion = data.get('Condicion');
-        let sele_estado = data.get('Estado');
-        let bar_search ='%' + data.get('bar_search') + '%';
+        const sele_lugar = data.get('Lugar');
+        const sele_tipo = data.get('Tipo');
+        const sele_condicion = data.get('Condicion');
+        const sele_estado = data.get('Estado');
+        const bar_search ='%' + data.get('bar_search') + '%';
 
         const filtro = await db
             .select({

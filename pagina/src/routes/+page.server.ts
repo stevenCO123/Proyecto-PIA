@@ -1,15 +1,35 @@
 import { db } from "$lib/database";
 import { usuarios } from "$lib/database/schema";
-import { eq, and} from "drizzle-orm";
-import { fail, redirect } from "@sveltejs/kit";
+import { eq, and } from "drizzle-orm";
+import {fail, redirect } from "@sveltejs/kit";
+import { message, superValidate } from 'sveltekit-superforms/server';
+import { zod } from 'sveltekit-superforms/adapters';
+import { z } from "zod";
 
+const schema_form = z.object({
+    codigo: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    documento: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    clave: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9')
+})
+
+export const load = (async () => {
+    const form = await superValidate(zod(schema_form));
+    console.log(form)
+    return { form }
+});
 
 export const actions = {
-    conectar: async ({ cookies, request }) => {
+    default: async ({ cookies, request }) => {
         const data = await request.formData();
-        let codi_form = data.get('codigo');
-        let docu_form = data.get('documento');
-        let clav_form = data.get('clave');
+        const form = await superValidate(data, zod(schema_form));
+
+        if (!form.valid) {
+            return fail(400, { form });
+        }
+
+        const codi_form = data.get('codigo');
+        const docu_form = data.get('documento');
+        const clav_form = data.get('clave');
 
         const result = await db
             .select({
@@ -20,9 +40,9 @@ export const actions = {
             })
             .from(usuarios)
             .where(and(
-                eq(usuarios.codigo, clav_form),
-                eq(usuarios.documento, codi_form),
-                eq(usuarios.clave, docu_form)
+                eq(usuarios.codigo, codi_form),
+                eq(usuarios.documento, docu_form),
+                eq(usuarios.clave, clav_form)
             ))
 
         if (result.length === 1) {
@@ -31,10 +51,8 @@ export const actions = {
             return redirect(302, '/pagina/inicio');
         }
         else {
-            return fail(402, {
-                no_found: true
-            });
+            return message(form,'No se ha encontrado su usuario porfavor verifique los valores introducidos',
+                {status: 402})
         }
-
     }
 }
