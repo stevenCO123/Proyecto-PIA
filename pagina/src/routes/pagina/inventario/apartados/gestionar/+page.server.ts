@@ -36,7 +36,13 @@ export const load = async ({ cookies }) => {
         .leftJoin(estados, eq(estados.id, inventario.idEstado))
         .where(eq(encargados.idDocentes, asig[0].id))
 
-    return { result };
+        const LTCE_unico = {
+            tipo: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_tipo === item.id_tipo && t.tipo_des === item.tipo_des))),
+            condicion: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_condicion === item.id_condicion && t.condicion_des === item.condicion_des))),
+            estado: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_estado === item.id_estado && t.estado_des === item.estado_des)))
+        }
+
+    return { result, LTCE_unico};
 }
 
 export const actions = {

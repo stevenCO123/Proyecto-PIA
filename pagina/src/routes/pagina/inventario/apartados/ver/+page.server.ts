@@ -22,9 +22,16 @@ export const load = async () => {
         .leftJoin(lugares, eq(lugares.id, inventario.idLugar))
         .leftJoin(tipos, eq(tipos.id, inventario.idTipo))
         .leftJoin(condicion, eq(condicion.id, inventario.idCondicion))
-        .leftJoin(estados, eq(estados.id, inventario.idEstado))
+        .leftJoin(estados, eq(estados.id, inventario.idEstado));
 
-    return { result };
+    const LTCE_unico = {
+        lugar: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_lugar === item.id_lugar && t.lugar_des === item.lugar_des))),
+        tipo: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_tipo === item.id_tipo && t.tipo_des === item.tipo_des))),
+        condicion: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_condicion === item.id_condicion && t.condicion_des === item.condicion_des))),
+        estado: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_estado === item.id_estado && t.estado_des === item.estado_des)))
+    }
+
+    return { result, LTCE_unico};
 }
 
 export const actions = {
@@ -35,7 +42,7 @@ export const actions = {
         const sele_tipo = data.get('Tipo');
         const sele_condicion = data.get('Condicion');
         const sele_estado = data.get('Estado');
-        const bar_search ='%' + data.get('bar_search') + '%';
+        const bar_search = '%' + data.get('bar_search') + '%';
 
         const filtro = await db
             .select({
@@ -76,6 +83,6 @@ export const actions = {
         }
     },
     quitar: async () => {
-        return {filtracion: false}
+        return { filtracion: false }
     }
 }

@@ -24,8 +24,8 @@
         Lugar:
         <select name="Lugar" id="Lugar">
             <option value="%%" selected></option>
-            {#each data.result as item}
-                <option value={item.id_lugar}>
+            {#each data.LTCE_unico.lugar as item}
+                <option value={item.lugar}>
                     {@html item.lugar_des}
                 </option>
             {/each}
@@ -37,7 +37,7 @@
         Tipo:
         <select name="Tipo" id="Tipo">
             <option value="%%" selected></option>
-            {#each data.result as item}
+            {#each data.LTCE_unico.tipo as item}
                 <option value={item.id_tipo}>
                     {@html item.tipo_des}
                 </option>
@@ -49,7 +49,7 @@
         Condicion:
         <select name="Condicion" id="Condicion">
             <option value="%%" selected></option>
-            {#each data.result as item}
+            {#each data.LTCE_unico.condicion as item}
                 <option value={item.id_condicion}>
                     {@html item.condicion_des}
                 </option>
@@ -61,7 +61,7 @@
         Estado:
         <select name="Estado" id="Estado">
             <option value="%%" selected></option>
-            {#each data.result as item}
+            {#each data.LTCE_unico.estado as item}
                 <option value={item.id_estado}>
                     {@html item.estado_des}
                 </option>
