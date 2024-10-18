@@ -6,9 +6,6 @@ import { fail } from "@sveltejs/kit";
 export const load = async () => {
     const result = await db
         .select({
-            id: inventario.id,
-            nombre_art: inventario.nombreArt,
-            cantidad: inventario.cantidad,
             id_lugar: inventario.idLugar,
             id_tipo: inventario.idTipo,
             id_condicion: inventario.idCondicion,
@@ -31,7 +28,7 @@ export const load = async () => {
         estado: result.filter((item, index, self) => index === self.findIndex((t) => (t.id_estado === item.id_estado && t.estado_des === item.estado_des)))
     }
 
-    return { result, LTCE_unico};
+    return { LTCE_unico};
 }
 
 export const actions = {

@@ -10,7 +10,7 @@
                 /></a
             >
 
-            <slot/>
+            <slot />
         </center>
     </div>
 </main>

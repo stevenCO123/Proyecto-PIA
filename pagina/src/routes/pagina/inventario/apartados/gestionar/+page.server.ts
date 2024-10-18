@@ -15,9 +15,6 @@ export const load = async ({ cookies }) => {
 
     const result = await db
         .select({
-            id: inventario.id,
-            nombre_art: inventario.nombreArt,
-            cantidad: inventario.cantidad,
             id_lugar: inventario.idLugar,
             id_tipo: inventario.idTipo,
             id_condicion: inventario.idCondicion,

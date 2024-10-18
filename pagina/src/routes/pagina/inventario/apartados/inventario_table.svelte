@@ -19,18 +19,18 @@
             placeholder="Ejemplo: silla"
         />
     </label>
-    {#if pag_ver}   
-    <label for="Lugar">
-        Lugar:
-        <select name="Lugar" id="Lugar">
-            <option value="%%" selected></option>
-            {#each data.LTCE_unico.lugar as item}
-                <option value={item.id_lugar}>
-                    {@html item.lugar_des}
-                </option>
-            {/each}
-        </select>
-    </label>
+    {#if pag_ver}
+        <label for="Lugar">
+            Lugar:
+            <select name="Lugar" id="Lugar">
+                <option value="%%" selected></option>
+                {#each data.LTCE_unico.lugar as item}
+                    <option value={item.id_lugar}>
+                        {@html item.lugar_des}
+                    </option>
+                {/each}
+            </select>
+        </label>
     {/if}
 
     <label for="Tipo">
@@ -84,16 +84,21 @@
 
 <table>
     <tbody>
-        <tr>
-            <td>nombre del articulo</td>
-            <td>Cantidad</td>
-            <td>Lugar del articulo</td>
-            <td>Tipo de articulo</td>
-            <td>condicion del articulo</td>
-            <td>estado de prestamo</td>
-        </tr>
-
+        {#if !form?.filtracion}
+            <tr>
+                <td>ingrese los campos que desea conocer en el inventarior</td>
+            </tr>
+        {/if}
         {#if form?.filtracion}
+            <tr>
+                <td>nombre del articulo</td>
+                <td>Cantidad</td>
+                <td>Lugar del articulo</td>
+                <td>Tipo de articulo</td>
+                <td>condicion del articulo</td>
+                <td>estado de prestamo</td>
+            </tr>
+
             {#each form?.filtro as item}
                 <tr>
                     <td>{@html item.nombre_art}</td>
