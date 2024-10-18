@@ -25,7 +25,7 @@
         <select name="Lugar" id="Lugar">
             <option value="%%" selected></option>
             {#each data.LTCE_unico.lugar as item}
-                <option value={item.lugar}>
+                <option value={item.id_lugar}>
                     {@html item.lugar_des}
                 </option>
             {/each}
@@ -105,7 +105,7 @@
                 </tr>
             {/each}
         {/if}
-        {#if !form?.filtracion}
+        <!--{#if !form?.filtracion}
             {#each data.result as item}
                 <tr>
                     <td>{@html item.nombre_art}</td>
@@ -116,6 +116,6 @@
                     <td>{@html item.estado_des}</td>
                 </tr>
             {/each}
-        {/if}
+        {/if}-->
     </tbody>
 </table>
