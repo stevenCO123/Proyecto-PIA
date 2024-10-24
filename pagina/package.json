@@ -24,8 +24,12 @@
 	"type": "module",
 	"dependencies": {
 		"@libsql/client": "^0.9.0",
+		"@lucia-auth/adapter-drizzle": "^1.1.0",
 		"@sveltejs/adapter-auto": "^3.2.5",
 		"dotenv": "^16.4.5",
-		"drizzle-orm": "^0.33.0"
+		"drizzle-orm": "^0.33.0",
+		"lucia": "^3.2.2",
+		"lucia-auth": "^1.8.0",
+		"oslo": "^1.2.1"
 	}
 }

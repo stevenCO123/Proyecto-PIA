@@ -57,6 +57,12 @@ export const usuarios = sqliteTable("Usuarios", {
 	clave: integer("clave"),
 });
 
+export const sesion = sqliteTable("sesion", {
+	id: text("id").primaryKey(),
+	expiresTime: integer("expires_time"),
+	usuarioId: integer("usuario_id").references(() => usuarios.id),
+});
+
 export const docentes = sqliteTable("docentes", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	imagen: text("imagen"),

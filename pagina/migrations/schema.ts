@@ -64,3 +64,9 @@ export const docentes = sqliteTable("docentes", {
 	apellido: text("apellido"),
 	idUsuario: integer("id_usuario").references(() => usuarios.id),
 });
+
+export const sesion = sqliteTable("sesion", {
+	id: text("id").primaryKey(),
+	expiresTime: integer("expires_time"),
+	usuarioId: integer("usuario_id").references(() => usuarios.id),
+});
