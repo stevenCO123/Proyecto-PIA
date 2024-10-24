@@ -7,11 +7,11 @@ declare global {
 			user: import('lucia').User | null;
 			session: import('lucia').Session | null;
 		}
-		interface PageData {
+		/*interface PageData {
 			pageMetaTags?: MetaTagsProps;
 			isLoggedIn: boolean;
 			flash?: {type: 'success' | 'error'; message: string};
-		}
+		}*/
 		// interface PageState {}
 		// interface Platform {}
 	}

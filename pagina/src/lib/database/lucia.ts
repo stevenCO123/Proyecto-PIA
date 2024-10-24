@@ -29,7 +29,7 @@ declare module 'lucia' {
 }
 
 type DatabaseUserAttributes = {
-    codigo: number;
-    documento: number;
+    codigo: string;
+    documento: string;
 }
 
