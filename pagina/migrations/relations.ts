@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm/relations";
-import { estados, inventario, condicion, tipos, lugares, prestamos, docentes, encargados, usuarios, sesion } from "./schema";
+import { estados, inventario, condicion, tipos, lugares, prestamos, docentes, encargados, usuarios, session } from "./schema";
 
 export const inventarioRelations = relations(inventario, ({one, many}) => ({
 	estado: one(estados, {
@@ -87,12 +87,12 @@ export const encargadosRelations = relations(encargados, ({one}) => ({
 
 export const usuariosRelations = relations(usuarios, ({many}) => ({
 	docentes: many(docentes),
-	sesions: many(sesion),
+	sessions: many(session),
 }));
 
-export const sesionRelations = relations(sesion, ({one}) => ({
+export const sessionRelations = relations(session, ({one}) => ({
 	usuario: one(usuarios, {
-		fields: [sesion.usuarioId],
+		fields: [session.userId],
 		references: [usuarios.id]
 	}),
 }));
