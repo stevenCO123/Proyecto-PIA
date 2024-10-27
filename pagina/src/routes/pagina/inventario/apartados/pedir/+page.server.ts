@@ -49,5 +49,34 @@ export const actions = {
             return { selecion, docente_sele: true }
         }
 
+        docente = salon_sele
+
+    },
+
+    crear: async ({ request, locals }) => {
+        const formData = await request.formData();
+        const data = Object.fromEntries(formData);
+        const usuario = locals.user?.id as string
+        const fechaActual = new Date();
+        try {
+            await db.insert(prestamos).values({
+                idPrestador: docente,
+                idRecibe: usuario,
+                idArticulo: data.inventario,
+                cantidad: data.sele_can,
+                descripcion: data.mensaje,
+                fechaSolicitud: fechaActual,
+                fechaDevueltaPropuesta: data.fechadev,
+                
+            });
+        } catch (error) {
+            if (error instanceof LibsqlError) {
+                console.log(error);
+            }
+
+            return fail(500, { error });
+        }
+
+        return { success: true };
     }
 }

@@ -12,6 +12,7 @@
     }
 </script>
 
+
 <section>
     <div class="texto_1">
         <center>
@@ -35,7 +36,7 @@
             {/if}
             <br />
             {#if form?.docente_sele}
-                <form action="?/enviar_prestamo" class="prestamo1">
+                <form action="?/crear" class="prestamo1" method="post">
                     <label for="docente">
                         {@html nombre_C_docente}                       
                     </label>
@@ -75,7 +76,7 @@
                     </label>
                     <label for="fecha">
                         Fecha de devolucion
-                        <input type="date" placeholder="00/00/0000" />
+                        <input type="date" placeholder="00/00/0000" name="fechadev"/>
                     </label>
                     <br>
                     <input id="boton" type="submit" value="Enviar" />
