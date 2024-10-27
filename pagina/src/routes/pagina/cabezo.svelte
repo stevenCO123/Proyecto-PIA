@@ -14,13 +14,6 @@
             <li><a href="/pagina/inventario" class="inv">Inventario</a></li>
             <li>
                 <a href="/pagina/acerca-de" class="inv">Información</a>
-                <ul class="menu-vertical">
-                    <li>
-                        <a href="/pagina/actualizaciones"
-                            >Proximas Actualizaciónes</a
-                        >
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="../../../inicio_out"
