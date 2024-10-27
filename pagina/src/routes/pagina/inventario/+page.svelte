@@ -1,16 +1,11 @@
+
 <html lang="es">
     <title>Inventario AUDM</title>
 </html>
 <div class="texto_1">
     <center>
-        <button><a href="./inventario/apartados/ver">ver todo el inventario</a></button>
-        <button
-            ><a href="./inventario/apartados/gestionar">gestionar inventario encargado</a
-            ></button
-        >
-        <button
-            ><a href="./inventario/apartados/pedir">pedir prestamo de inventario</a
-            ></button
-        >
+        <button class="botones" on:click={() => {window.location.href = "./inventario/apartados/ver"}}>ver todo el inventario</button>
+        <button class="botones"on:click={() => {window.location.href = "./inventario/apartados/gestionar"}}>gestionar inventario</button>
+        <button class="botones" on:click={() => {window.location.href = "./inventario/apartados/pedir"}}>prestamo inventario</button>
     </center>
 </div>
