@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>Acerca de AUDM</title>
+</html>
 <section>
     <div class="texto_1">
         <span>
@@ -69,6 +72,7 @@
                     actividad se considere un entregable que dé cuenta del
                     cumplimiento de la actividad.
                 </p>
+                <br>
             </center>
         </span>
     </div>

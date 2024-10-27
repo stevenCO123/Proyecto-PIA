@@ -12,8 +12,6 @@ export const load = async () => {
         })
         .from(lugares)
 
-    console.log(result);
-
     return { result };
 }
 

@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>Inicio de sesion AUDM</title>
+</html>
 <script lang="ts">
     import { superForm } from "sveltekit-superforms/client";
     import "../../app.css";

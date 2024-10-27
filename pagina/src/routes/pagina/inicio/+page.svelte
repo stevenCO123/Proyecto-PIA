@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>AUDM</title>
+</html>
 <script lang="ts">
     import { onMount } from "svelte";
 

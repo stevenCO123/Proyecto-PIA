@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>Inventario AUDM</title>
+</html>
 <main>
     <div class="texto_1">
         <center>

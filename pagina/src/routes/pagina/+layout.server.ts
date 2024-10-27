@@ -1,5 +1,6 @@
 import { lucia } from "$lib/database/lucia";
 import { fail, redirect } from "@sveltejs/kit";
+import { Cookie } from "lucia";
 
 export const load = (async ({locals}) => {
     if (!locals.user) {
@@ -9,3 +10,4 @@ export const load = (async ({locals}) => {
 		user: locals.user
 	};
 });
+

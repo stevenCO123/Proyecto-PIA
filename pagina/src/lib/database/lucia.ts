@@ -1,4 +1,4 @@
-import { Lucia } from "lucia";
+import { Lucia, TimeSpan } from "lucia";
 import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
 import { db } from "./index";
 import { usuarios, session } from "./schema";
@@ -8,15 +8,16 @@ const db_adaptador = new DrizzleSQLiteAdapter(db, session, usuarios);
 
 export const lucia = new Lucia(db_adaptador,{
     sessionCookie:{
+        name:"sesion AUDM",
         attributes:{
             secure: !dev
         }
     },
+    sessionExpiresIn: new TimeSpan(2, "d"),
 
     getUserAttributes: (attributes) => {
         return {
-            codigo: attributes.codigo,
-            documento: attributes.documento
+            id: attributes.id,
         }
     }
 });
@@ -29,7 +30,6 @@ declare module 'lucia' {
 }
 
 type DatabaseUserAttributes = {
-    codigo: string;
-    documento: string;
+    id: string;
 }
 

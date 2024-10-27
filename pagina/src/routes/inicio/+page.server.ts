@@ -46,9 +46,10 @@ export const actions = {
                 { status: 402 })
         }
 
-        const result_solve = result[0].clave?.toString() as string;
+        const result_clave = result[0].clave?.toString() as string;
+        const result_id = result[0].id?.toString() as string;
 
-        const clave_hash = await hash(result_solve, {
+        const clave_hash = await hash(result_clave, {
             memoryCost: 19456,
             timeCost: 2,
             outputLen: 32,
@@ -60,7 +61,7 @@ export const actions = {
             return message(form, "a ocurrido un error porfavor verificar la clave", { status: 400 })
         }
 
-        const session = await lucia.createSession(result_solve, {});
+        const session = await lucia.createSession(result_id, {});
         const sessionCookie = lucia.createSessionCookie(session.id);
         cookies.set(sessionCookie.name, sessionCookie.value, {
             path: ".",

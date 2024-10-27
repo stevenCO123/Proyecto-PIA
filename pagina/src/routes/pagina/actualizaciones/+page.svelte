@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>Actualizaciones AUDM</title>
+</html>
 <section>
     <div class= "texto_1">
         <center>

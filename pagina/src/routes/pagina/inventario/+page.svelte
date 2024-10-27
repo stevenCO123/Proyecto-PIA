@@ -1,3 +1,6 @@
+<html lang="es">
+    <title>Inventario AUDM</title>
+</html>
 <div class="texto_1">
     <center>
         <button><a href="./inventario/apartados/ver">ver todo el inventario</a></button>
