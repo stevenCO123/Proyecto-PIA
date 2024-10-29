@@ -46,7 +46,8 @@ export const actions = {
 
         if (selecion && selecion.length > 0) {
             console.log(selecion)
-            return { selecion, docente_sele: true }
+            const nombreDocente = selecion[0].docente_nom + ' ' + selecion[0].docente_ape 
+            return { selecion, docente_sele: true, nombreDocente, salon: salon_sele }
         }
 
         docente = salon_sele
