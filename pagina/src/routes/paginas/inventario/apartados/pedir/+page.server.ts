@@ -1,5 +1,5 @@
-import { db } from "$lib/database";
-import { docentes, inventario, lugares, encargados, prestamos } from '$lib/database/schema'
+import { db } from "$lib/server/database";
+import { docentes, inventario, lugares, encargados, prestamos } from '$lib/server/database/schema'
 import { eq, and, like } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 import { LibsqlError } from '@libsql/client';

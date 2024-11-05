@@ -1,5 +1,5 @@
-import { db } from "$lib/database";
-import { docentes} from "$lib/database/schema";
+import { db } from "$lib/server/database";
+import { docentes} from "$lib/server/database/schema";
 import { eq} from "../../../../node_modules/drizzle-orm/expressions";
 
 export const load = async ({locals}) => {

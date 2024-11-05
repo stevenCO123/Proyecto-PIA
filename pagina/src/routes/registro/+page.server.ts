@@ -1,10 +1,10 @@
-import { db } from "$lib/database/index";
-import { usuarios,schema_registro } from "$lib/database/schema";
+import { db } from "$lib/server/database/index";
+import { usuarios,schema_registro } from "$lib/server/database/schema";
 import { eq, and } from "drizzle-orm";
 import { fail, redirect } from "@sveltejs/kit";
 import { message, superValidate } from 'sveltekit-superforms/server';
 import { zod } from 'sveltekit-superforms/adapters';
-import { lucia } from "$lib/database/lucia";
+import { lucia } from "$lib/server/database/lucia";
 import { verify } from "@node-rs/argon2";
 import { hash } from '@node-rs/argon2';
 

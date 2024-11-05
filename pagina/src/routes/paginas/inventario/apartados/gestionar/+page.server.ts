@@ -1,5 +1,5 @@
-import { db } from "$lib/database";
-import { condicion, encargados, estados, inventario, lugares, tipos, usuarios } from '$lib/database/schema'
+import { db } from "$lib/server/database";
+import { condicion, encargados, estados, inventario, lugares, tipos, usuarios } from '$lib/server/database/schema'
 import { eq, and, like } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 
