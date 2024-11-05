@@ -1,5 +1,5 @@
 import { db } from "$lib/database";
-import { docentes, estados, inventario, lugares, encargados, prestamos } from '$lib/database/schema'
+import { docentes, inventario, lugares, encargados, prestamos } from '$lib/database/schema'
 import { eq, and, like } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 import { LibsqlError } from '@libsql/client';
@@ -12,13 +12,7 @@ export const load = async () => {
             lugar_id: lugares.id,
         })
         .from(lugares)
-
-    console.log(result);
-    const LI_unico = {
-        lugar: result.filter((item, index, self) => index === self.findIndex((t) => (t.lugar_id === item.lugar_id && t.lugar_des === item.lugar_des))),
-
-    }
-    return { LI_unico, result };
+    return { result };
 }
 
 export const actions = {

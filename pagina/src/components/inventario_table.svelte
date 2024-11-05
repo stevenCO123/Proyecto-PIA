@@ -26,7 +26,7 @@
                 <option value="%%" selected></option>
                 {#each data.LTCE_unico.lugar as item}
                     <option value={item.id_lugar}>
-                        {@html item.lugar_des}
+                        {item.lugar_des}
                     </option>
                 {/each}
             </select>
@@ -39,7 +39,7 @@
             <option value="%%" selected></option>
             {#each data.LTCE_unico.tipo as item}
                 <option value={item.id_tipo}>
-                    {@html item.tipo_des}
+                    {item.tipo_des}
                 </option>
             {/each}
         </select>
@@ -51,7 +51,7 @@
             <option value="%%" selected></option>
             {#each data.LTCE_unico.condicion as item}
                 <option value={item.id_condicion}>
-                    {@html item.condicion_des}
+                    {item.condicion_des}
                 </option>
             {/each}
         </select>
@@ -63,7 +63,7 @@
             <option value="%%" selected></option>
             {#each data.LTCE_unico.estado as item}
                 <option value={item.id_estado}>
-                    {@html item.estado_des}
+                    {item.estado_des}
                 </option>
             {/each}
         </select>
@@ -101,26 +101,14 @@
 
             {#each form?.filtro as item}
                 <tr>
-                    <td>{@html item.nombre_art}</td>
-                    <td>{@html item.cantidad}</td>
-                    <td>{@html item.lugar_des}</td>
-                    <td>{@html item.tipo_des}</td>
-                    <td>{@html item.condicion_des}</td>
-                    <td>{@html item.estado_des}</td>
+                    <td>{item.nombre_art}</td>
+                    <td>{item.cantidad}</td>
+                    <td>{item.lugar_des}</td>
+                    <td>{item.tipo_des}</td>
+                    <td>{item.condicion_des}</td>
+                    <td>{item.estado_des}</td>
                 </tr>
             {/each}
         {/if}
-        <!--{#if !form?.filtracion}
-            {#each data.result as item}
-                <tr>
-                    <td>{@html item.nombre_art}</td>
-                    <td>{@html item.cantidad}</td>
-                    <td>{@html item.lugar_des}</td>
-                    <td>{@html item.tipo_des}</td>
-                    <td>{@html item.condicion_des}</td>
-                    <td>{@html item.estado_des}</td>
-                </tr>
-            {/each}
-        {/if}-->
     </tbody>
 </table>

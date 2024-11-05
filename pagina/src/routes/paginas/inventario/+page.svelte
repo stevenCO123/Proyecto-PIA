@@ -1,7 +1,3 @@
-
-<html lang="es">
-    <title>Inventario AUDM</title>
-</html>
 <div class="texto_1">
     <center>
         <button class="botones" on:click={() => {window.location.href = "./inventario/apartados/ver"}}>ver todo el inventario</button>

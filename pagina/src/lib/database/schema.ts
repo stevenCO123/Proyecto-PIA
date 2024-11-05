@@ -1,5 +1,5 @@
-import { sqliteTable, integer, foreignKey, text } from "drizzle-orm/sqlite-core"
-  import { sql } from "drizzle-orm"
+import { sqliteTable, integer, foreignKey, text } from "drizzle-orm/sqlite-core";
+import { z } from "zod";
 
 export const lugares = sqliteTable("Lugares", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
@@ -70,3 +70,10 @@ export const docentes = sqliteTable("docentes", {
 	apellido: text("apellido"),
 	idUsuario: integer("id_usuario").references(() => usuarios.id),
 });
+
+export const schema_registro = z.object({
+    codigo: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    documento: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    clave: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9')
+});
+

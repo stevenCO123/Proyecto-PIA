@@ -1,3 +1,34 @@
+<header>
+    <nav>
+        <ul class="menu-horizontal">
+            <li>
+                <a href="../../../paginas/inicio">
+                    <img
+                        src="https://res.cloudinary.com/dnontz2gc/image/upload/v1723574291/img%20pia/house.png"
+                        alt="casa"
+                        width="50px"
+                        height="50px"
+                    />
+                    </a>
+            </li>
+            <li><a href="../../../paginas/inventario" class="inv">Inventario</a></li>
+            <li><a href="../../../paginas/acerca-de" class="inv">Información</a></li>
+            <li>
+                <a href="../../../salida">
+                    <img
+                        src="https://cdn-icons-png.flaticon.com/512/61/61208.png"
+                        alt="pato"
+                        width="50px"
+                        height="50px"
+                    />
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<slot/>
+
 <footer class="pie-de-pagina">
     <div class="grupo-1">
         <div class="box">
@@ -52,3 +83,4 @@
         </div>
     </div>
 </footer>
+

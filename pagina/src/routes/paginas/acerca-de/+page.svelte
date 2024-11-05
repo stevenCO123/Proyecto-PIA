@@ -1,6 +1,3 @@
-<html lang="es">
-    <title>Acerca de AUDM</title>
-</html>
 <section>
     <div class="texto_1">
         <span>

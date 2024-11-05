@@ -2,7 +2,7 @@
     export let data;
     export let form;
     let pag_ver = true;
-    import InventarioTable from "../inventario_table.svelte";
+    import InventarioTable from "../../../../../components/inventario_table.svelte";
 </script>
 
 <section>
