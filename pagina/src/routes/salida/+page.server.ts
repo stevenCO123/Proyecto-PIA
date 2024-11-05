@@ -1,4 +1,4 @@
-import { lucia } from "$lib/database/lucia";
+import { lucia } from "$lib/server/database/lucia";
 import { redirect } from "@sveltejs/kit";
 export const load = (async ({ locals , cookies}) => {
     if (!locals.session) 

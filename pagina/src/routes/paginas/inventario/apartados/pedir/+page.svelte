@@ -59,25 +59,13 @@ function enviarFormulario(event: Event) {
                     <input type="number" name="sele_can" />
                 </label>
                 <br />
-                <label for="des">
-                    Seleccione el salon del destino: 
-                    <select name="destino" id="dest">
-                        <option value="" disabled selected></option>
-                        {#each data.result as item}
-                        <option value={item.lugar_id}>
-                            {item.lugar_des}
-                        </option>
-                        {/each}
-                    </select>
-                </label>
-                <br>
                 <label for="mensaje"> Razon del prestamo:
-                    <input type="text" id="mensaje" class="textbox" placeholder="Ej:Para ver cine" size="200" style="width: 25%;"> 
+                    <input type="text" name="mensaje" class="textbox" placeholder="Ej:Para ver cine" size="200" style="width: 25%;"> 
                 </label>
                 <br>
                 <label for="fecha">
                     Fecha de devolucion
-                    <input type="date" placeholder="00/00/0000" name="fechadev"/>
+                    <input type="date" name="fechadev"/>
                 </label>
                 <br>
                 <input id="boton" type="submit" value="Enviar" />

@@ -3,8 +3,10 @@ import { docentes, inventario, lugares, encargados, prestamos } from '$lib/serve
 import { eq, and, like } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 import { LibsqlError } from '@libsql/client';
+import { format } from 'date-fns';
 
-let docente: any
+let docente_prestador: any;
+
 export const load = async () => {
     const result = await db
         .select({
@@ -20,12 +22,11 @@ export const actions = {
         const data = await request.formData();
         const salon_sele = data.get('Lugar');
 
-        console.log(salon_sele)
-
         const selecion = await db
             .select({
                 encargados_lugar: encargados.idLugares,
                 encargados_docentes: encargados.idDocentes,
+                docente_id: docentes.id,
                 docente_nom: docentes.nombre,
                 docente_ape: docentes.apellido,
                 inventario_des: inventario.nombreArt,
@@ -36,33 +37,35 @@ export const actions = {
             .from(encargados)
             .leftJoin(inventario, eq(encargados.idLugares, inventario.idLugar))
             .leftJoin(docentes, eq(docentes.id, encargados.idDocentes))
-            .where(and(like(encargados.idLugares, salon_sele), like(inventario.idLugar, salon_sele)))
+            .where(and(
+                like(encargados.idLugares, salon_sele),
+                like(inventario.idLugar, salon_sele),
+                like(inventario.idEstado, "1")
+            ));
 
         if (selecion && selecion.length > 0) {
-            console.log(selecion)
-            const nombreDocente = selecion[0].docente_nom + ' ' + selecion[0].docente_ape 
+            const nombreDocente = selecion[0].docente_nom + ' ' + selecion[0].docente_ape;
+            docente_prestador = selecion[0].docente_id;
             return { selecion, docente_sele: true, nombreDocente, salon: salon_sele }
         }
-
-        docente = salon_sele
-
     },
 
     crear: async ({ request, locals }) => {
         const formData = await request.formData();
         const data = Object.fromEntries(formData);
-        const usuario = locals.user?.id as string
-        const fechaActual = new Date();
+        const usuario = parseInt(locals.user?.id as string)
+        const fechaActual = format(new Date(), 'yyyyMMdd');
+        const fechaDevueltaP = format(data.fechadev as string, 'yyyyMMdd');
         try {
             await db.insert(prestamos).values({
-                idPrestador: docente,
+                idPrestador: docente_prestador,
                 idRecibe: usuario,
-                idArticulo: data.inventario,
-                cantidad: data.sele_can,
-                descripcion: data.mensaje,
-                fechaSolicitud: fechaActual,
-                fechaDevueltaPropuesta: data.fechadev,
-                
+                idArticulo: parseInt(data.inventario as string),
+                cantidad: parseInt(data.sele_can as string),
+                idEstado: 3,
+                descripcion: data.mensaje as string,
+                fechaSolicitud: parseInt(fechaActual),
+                fechaDevueltaPropuesta: parseInt(fechaDevueltaP)
             });
         } catch (error) {
             if (error instanceof LibsqlError) {
