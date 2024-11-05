@@ -3,11 +3,6 @@
 </script>
 
 <section><div class="texto_1">
-    <table width="407" align="center">
-        <tbody>
-            <tr>
-                <td>
-                    <span>
                         <img
                             id="img_usuario"
                             alt="imagen usuario"
@@ -15,18 +10,12 @@
                             height="200"
                             src={data.img_usuario}
                         />
-                    </span>
-                </td>
-                <td>
-                    <p id="name_full_usuario">
+                    <p id="name_full_usuario" style="font-size: larger;"><strong>
                         {data.nom_usuario}
                         {data.ape_usuario}
+                    </strong>
                     </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br />
+    <br/>
     <h2>AUDM</h2>
     <span>
         (Administración Universal De Materiales) es un proyecto que

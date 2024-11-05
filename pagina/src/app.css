@@ -82,8 +82,11 @@ input[type=submit] {
     width: 100px;
     cursor : pointer;
     transition: all 500ms ease;
-}
 
+}
+input[type=submit]:hover{
+    background-color: #1069f0;
+}
 img {
     overflow-clip-margin: content-box;
     overflow: clip;
@@ -109,4 +112,24 @@ margin: auto;
 }
 .botones:hover{
     background-color: #1069f0;
+}
+.labe_ver{
+display: flex;
+margin: auto;
+padding-left: 38%;
+}
+table{
+border-collapse: collapse;
+width: 100%;
+}
+.inventario th,.inventario td{
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+.inventario th{
+    background-color: #a6d3f9;
+}
+.inventario td{
+    background-color: white;
 }

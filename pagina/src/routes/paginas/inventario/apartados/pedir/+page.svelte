@@ -72,8 +72,9 @@ function enviarFormulario(event: Event) {
                 </label>
                 <br>
                 <label for="mensaje"> Razon del prestamo:
-                    <input type="text" id="mensaje" class="textbox" placeholder="Ej:Para ver cine" size="200"> 
+                    <input type="text" id="mensaje" class="textbox" placeholder="Ej:Para ver cine" size="200" style="width: 25%;"> 
                 </label>
+                <br>
                 <label for="fecha">
                     Fecha de devolucion
                     <input type="date" placeholder="00/00/0000" name="fechadev"/>

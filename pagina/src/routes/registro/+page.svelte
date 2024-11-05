@@ -33,12 +33,12 @@
                 >
                     <div class="datos_usuario">
                         <label for="codigo">
-                            codigo
+
                             <input
                                 type="text"
                                 class="textbox"
                                 autocomplete="off"
-                                placeholder="EJ :1234"
+                                placeholder="Codigo"
                                 size="9"
                                 name="codigo"
                                 bind:value={$form.codigo}
@@ -49,12 +49,12 @@
                         </label>
                         <br />
                         <label for="documento">
-                            documento
+                            
                             <input
                                 type="text"
                                 class="textbox"
                                 autocomplete="off"
-                                placeholder="EJ:123456789"
+                                placeholder="Documento"
                                 size="9"
                                 name="documento"
                                 bind:value={$form.documento}
@@ -65,12 +65,12 @@
                         </label>
                         <br>
                         <label for="clave">
-                            clave
+                            
                             <input
                                 type="password"
                                 class="textbox"
                                 autocomplete="off"
-                                placeholder="EJ:1234"
+                                placeholder="Clave"
                                 size="9"
                                 name="clave"
                                 bind:value={$form.clave}

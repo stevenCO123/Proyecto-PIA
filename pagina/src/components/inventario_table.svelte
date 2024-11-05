@@ -10,7 +10,7 @@
     method="post"
     action="?/filtrar"
 >
-    <label for="Nombre">
+    <label for="Nombre" class="labe_ver">
         Nombre:
         <input
             id="bar_search"
@@ -18,12 +18,13 @@
             type="search"
             placeholder="Ejemplo: silla"
         />
+        <br>
     </label>
     {#if pag_ver}
-        <label for="Lugar">
+        <label for="Lugar" class="labe_ver" >
             Lugar:
-            <select name="Lugar" id="Lugar">
-                <option value="%%" selected></option>
+            <select name="Lugar" id="Lugar" style="width: 35%;">
+                <option value="%%" selected ></option>
                 {#each data.LTCE_unico.lugar as item}
                     <option value={item.id_lugar}>
                         {item.lugar_des}
@@ -33,9 +34,9 @@
         </label>
     {/if}
 
-    <label for="Tipo">
+    <label for="Tipo" class="labe_ver">
         Tipo:
-        <select name="Tipo" id="Tipo">
+        <select name="Tipo" id="Tipo" style="width: 36.7%;">
             <option value="%%" selected></option>
             {#each data.LTCE_unico.tipo as item}
                 <option value={item.id_tipo}>
@@ -45,9 +46,9 @@
         </select>
     </label>
 
-    <label for="Condicion">
+    <label for="Condicion" class="labe_ver">
         Condicion:
-        <select name="Condicion" id="Condicion">
+        <select name="Condicion" id="Condicion" style="width: 28.8%;">
             <option value="%%" selected></option>
             {#each data.LTCE_unico.condicion as item}
                 <option value={item.id_condicion}>
@@ -57,9 +58,9 @@
         </select>
     </label>
 
-    <label for="Estado">
+    <label for="Estado" class="labe_ver">
         Estado:
-        <select name="Estado" id="Estado">
+        <select name="Estado" id="Estado" style="width: 33.6%;">
             <option value="%%" selected></option>
             {#each data.LTCE_unico.estado as item}
                 <option value={item.id_estado}>
@@ -68,7 +69,8 @@
             {/each}
         </select>
     </label>
-
+<br>
+<br>
     <input id="boton" type="submit" value="ingresar" />
 </form>
 
@@ -76,27 +78,27 @@
     <form action="?/quitar">
         <input id="boton" type="submit" value="quitar filtro" />
     </form>
+    <br>
 {/if}
 
 {#if form?.no_found}
     <p>no hay resultados para su filtro</p>
 {/if}
-
-<table>
+<br>    
+<table class="inventario">
     <tbody>
         {#if !form?.filtracion}
-            <tr>
-                <td>ingrese los campos que desea conocer en el inventarior</td>
-            </tr>
+            
+                ingrese los campos que desea conocer en el inventarior
         {/if}
         {#if form?.filtracion}
             <tr>
-                <td>nombre del articulo</td>
-                <td>Cantidad</td>
-                <td>Lugar del articulo</td>
-                <td>Tipo de articulo</td>
-                <td>condicion del articulo</td>
-                <td>estado de prestamo</td>
+                <th>nombre del articulo</th>
+                <th>Cantidad</th>
+                <th>Lugar del articulo</th>
+                <th>Tipo de articulo</th>
+                <th>condicion del articulo</th>
+                <th>estado de prestamo</th>
             </tr>
 
             {#each form?.filtro as item}
