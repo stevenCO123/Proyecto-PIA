@@ -44,9 +44,8 @@ export const actions = {
             ));
 
         if (selecion && selecion.length > 0) {
-            const nombreDocente = selecion[0].docente_nom + ' ' + selecion[0].docente_ape;
             docente_prestador = selecion[0].docente_id;
-            return { selecion, docente_sele: true, nombreDocente, salon: salon_sele }
+            return { selecion, docente_sele: true, salon: salon_sele }
         }
     },
 

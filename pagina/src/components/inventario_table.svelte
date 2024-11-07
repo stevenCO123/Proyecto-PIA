@@ -89,7 +89,7 @@
     <tbody>
         {#if !form?.filtracion}
             
-                ingrese los campos que desea conocer en el inventarior
+                Ingrese los campos que desea conocer en el inventario.
         {/if}
         {#if form?.filtracion}
             <tr>

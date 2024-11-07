@@ -38,7 +38,9 @@ function enviarFormulario(event: Event) {
         {#if form?.docente_sele}
             <form action="?/crear" class="prestamo1" method="post">
                 <label for="docente">
-                    Docente: {form?.nombreDocente}                    
+                    {#each form?.selecion as item}
+                    Docente: {item.docente_nom} {item.docente_ape}
+                    {/each}                    
                 </label>
                 <br />
 
