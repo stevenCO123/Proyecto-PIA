@@ -1,7 +1,12 @@
 import { db } from "$lib/server/database";
 import { condicion, docentes, encargados, estados, inventario, lugares, prestamos, tipos, usuarios } from '$lib/server/database/schema'
-import { eq, and, like } from "drizzle-orm";
+import { eq, and, like, } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
+import { LibsqlError } from '@libsql/client';
+/*simon prueba
+import { json } from '@sveltejs/kit';
+import { drizzle } from '@drizzle/orm';
+*/
 
 let salon_usuario: any;
 
@@ -120,3 +125,51 @@ export const actions = {
         return { filtracion: false }
     },
 }
+     /* Simon prueba
+    gestion: async ({request, locals}) => {
+        const formData = await request.formData();
+        const data = Object.fromEntries(formData);
+        
+        try {
+            await db.insert(inventario).values({
+                nombreArt:data.nomart as string,
+                cantidad: parseInt(data.caninv as string)
+            });
+        }catch (error) {
+            if (error instanceof LibsqlError) {
+                console.log(error);
+            }
+
+            return fail(500, { error });
+        }
+
+        return { success: true };
+    }
+}
+
+
+ export async function POST({ request }) {
+    try {
+      const item = await request.json();
+      const { id, nombreRecibe, apellidoRecibe, articuloSolicitado, cantidad, descripcion, fechaSolicitud, fechaDevolucion } = item;
+  
+      // Usa Drizzle ORM para actualizar el pedido en la base de datos
+      const result = await db.inventario.update({
+        where: { id },
+        data: {
+          nombreRecibe,
+          apellidoRecibe,
+          articuloSolicitado,
+          cantidad,
+          descripcion,
+          fechaSolicitud,
+          fechaDevolucion
+        }
+      });
+  
+      return json({ success: true, message: 'Item updated successfully', result });
+    } catch (error) {
+      return json({ success: false, message: 'Error updating item', error: error.message }, { status: 500 });
+    }
+  }
+   simon prueba */
