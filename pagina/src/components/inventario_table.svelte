@@ -147,10 +147,10 @@
                         <input type="hidden" name="id_articulo" value={item.id}>
                         <input type= "hidden" name="cambio" value ={item.cambio ? 'true' : 'false'}>
                         <td>
-                            <input type="text" name="nomart" value={item.nombre_art} on:change={() => cambiar_valor(index)}/>
+                            <input type="text" name="nomart" value={item.nombre_art} class="inputos on:change={() => cambiar_valor(index)}/>
                         </td>
                         <td>
-                            <input type="number" name="cant" value={item.cantidad} on:change={() => cambiar_valor(index)} />
+                            <input type="number" name="caninv" value={item.cantidad} class="inputos on:change={() => cambiar_valor(index)}/>
                         </td>
                         <td>{item.lugar_des}</td>
                         <td>{item.tipo_des}</td>
