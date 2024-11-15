@@ -69,6 +69,7 @@
                     actividad se considere un entregable que dé cuenta del
                     cumplimiento de la actividad.
                 </p>
+                <br>
             </center>
         </span>
     </div>

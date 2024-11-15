@@ -1,5 +1,5 @@
-import { sqliteTable, integer, foreignKey, text } from "drizzle-orm/sqlite-core"
-  import { sql } from "drizzle-orm"
+import { sqliteTable, integer, foreignKey, text } from "drizzle-orm/sqlite-core";
+import { z } from "zod";
 
 export const lugares = sqliteTable("Lugares", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
@@ -39,9 +39,8 @@ export const prestamos = sqliteTable("Prestamos", {
 	cantidad: integer("cantidad"),
 	idEstado: integer("id_estado").references(() => estados.id),
 	descripcion: text("descripcion", { length: 100 }),
-	fechaPrestado: integer("fecha_prestado"),
-	fechaDevueltaPropuesta: integer("fecha_devuelta_propuesta"),
-	fechaDevueltaReal: integer("fecha_devuelta_real"),
+	fechaSolicitud: integer("fecha_Solicitud"),
+	fechaDevueltaPropuesta: integer("fecha_devuelta_propuesta")
 });
 
 export const encargados = sqliteTable("encargados", {
@@ -57,6 +56,12 @@ export const usuarios = sqliteTable("Usuarios", {
 	clave: integer("clave"),
 });
 
+export const session = sqliteTable("session", {
+	id: text("id").primaryKey().notNull(),
+	expiresAt: integer("expires_at"),
+	userId: text("user_id").references(() => usuarios.id),
+});
+
 export const docentes = sqliteTable("docentes", {
 	id: integer("id").primaryKey({ autoIncrement: true }),
 	imagen: text("imagen"),
@@ -64,3 +69,10 @@ export const docentes = sqliteTable("docentes", {
 	apellido: text("apellido"),
 	idUsuario: integer("id_usuario").references(() => usuarios.id),
 });
+
+export const schema_registro = z.object({
+    codigo: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    documento: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9'),
+    clave: z.string().regex(/^[0-9]+$/, 'solo debe usar caracteres del 0-9')
+});
+
