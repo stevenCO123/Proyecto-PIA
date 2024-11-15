@@ -23,6 +23,7 @@ function toggleTable() {
                     <th>Razon</th>
                     <th>Fecha solicitud</th>
                     <th>Fecha devolucion propuesta</th>
+                    <th>Opciones</th>
                 </tr>
 
                 {#each data.pedidos as item}
@@ -31,8 +32,20 @@ function toggleTable() {
                         <td>{item.articuloSolicitado}</td>
                         <td>{item.cantidad}</td>
                         <td>{item.descripcion}</td>
-                        <td>{data.año_soli}-{data.mes_soli}-{data.dia_soli}</td>
-                        <td>{data.año}-{data.mes}-{data.dia}</td>
+                        <td>{item.fechaSolicitud}</td>
+                        <td>{item.fechaDevueltaPropuesta}</td>
+                        <td>
+                            <form action="?/aceptar" method="post">
+                                <input type="hidden" name="item_id_pre" value={item.idPrestamo}>
+                                <input type="hidden" name="item_id_art" value={item.idArticulo}>
+                                <input type="submit"  value="Aceptar"/>
+                            </form>
+                            <form action="?/rechazar" method="post">
+                                <input type="hidden" name="item_id_pre" value={item.idPrestamo}>
+                                <input type="hidden" name="item_id_art" value={item.idArticulo}>
+                                <input type="submit"  value="Rechazar"/>
+                            </form>
+                        </td>
                     </tr>
                 {/each}
         </tbody>

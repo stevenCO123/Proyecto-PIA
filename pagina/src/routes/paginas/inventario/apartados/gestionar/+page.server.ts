@@ -3,10 +3,6 @@ import { condicion, docentes, encargados, estados, inventario, lugares, prestamo
 import { eq, and, like, } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 import { LibsqlError } from '@libsql/client';
-/*simon prueba
-import { json } from '@sveltejs/kit';
-import { drizzle } from '@drizzle/orm';
-*/
 
 let salon_usuario: any;
 
@@ -20,6 +16,7 @@ export const load = async ({locals }) => {
 
     const pedidos = await db
       .select({
+        idArticulo: inventario.id,
         idPrestamo: prestamos.id,
         nombreRecibe: docentes.nombre,
         apellidoRecibe: docentes.apellido,
@@ -28,28 +25,12 @@ export const load = async ({locals }) => {
         descripcion: prestamos.descripcion,
         fechaSolicitud: prestamos.fechaSolicitud,
         fechaDevueltaPropuesta: prestamos.fechaDevueltaPropuesta
-        
       })
       .from(prestamos)
       .leftJoin(docentes, eq(docentes.id , prestamos.idRecibe))
       .leftJoin(inventario, eq(inventario.id, prestamos.idArticulo))
-      .where(eq(prestamos.idPrestador, usuario));
-      
-        let fecha_devuelta_propuesta = pedidos[0].fechaDevueltaPropuesta?.toString();
-        
-        let año = fecha_devuelta_propuesta?.substring(0, 4); //0123 mocha en: 4
-        let mes = fecha_devuelta_propuesta?.substring(4, 6); //45 mocha en: 6
-        let dia = fecha_devuelta_propuesta?.substring(6, 8); //67 mocha en: 8
+      .where(and(eq(prestamos.idEstado, 3),eq(prestamos.idPrestador, usuario)));
 
-        let fecha_Solicitud = pedidos[0].fechaSolicitud?.toString();
-
-        let año_soli= fecha_Solicitud?.substring(0,4);
-        let mes_soli= fecha_Solicitud?.substring(4,6);
-        let dia_soli= fecha_Solicitud?.substring(6,8);
-
-        console.log("Año:", año);  // Salida: "2024"
-        console.log("Mes:", mes);   // Salida: "11"
-        console.log("Día:", dia);    // Salida: "07"
     const result = await db
         .select({
             id_tipo: inventario.idTipo,
@@ -73,7 +54,7 @@ export const load = async ({locals }) => {
 
     salon_usuario = asig[0].lugar_des;
 
-    return {salon_usuario, LTCE_unico, pedidos, fecha_devuelta_propuesta, año, mes, dia,año_soli,mes_soli,dia_soli};
+    return {salon_usuario, LTCE_unico, pedidos};
 }
 export const actions = {
     filtrar: async ({ request}) => {
@@ -124,52 +105,38 @@ export const actions = {
     quitar: async () => {
         return { filtracion: false }
     },
-}
-     /* Simon prueba
-    gestion: async ({request, locals}) => {
+
+    aceptar: async ({request}) => {
         const formData = await request.formData();
         const data = Object.fromEntries(formData);
-        
-        try {
-            await db.insert(inventario).values({
-                nombreArt:data.nomart as string,
-                cantidad: parseInt(data.caninv as string)
-            });
-        }catch (error) {
+        try{
+            await db.update(prestamos).set({idEstado : 2}).where(eq(prestamos.id,data.item_id_pre));
+            await db.update(inventario).set({idEstado : 2}).where(eq(inventario.id,data.item_id_art));
+        }
+        catch(error){
             if (error instanceof LibsqlError) {
                 console.log(error);
             }
+            return fail(500, { error });
+        }
 
+        return { success: true };
+    },
+
+    rechazar: async ({request}) => {
+        const formData = await request.formData();
+        const data = Object.fromEntries(formData);
+        try{
+            await db.delete(prestamos).where(eq(prestamos.id, data.item_id_pre));
+            await db.update(inventario).set({idEstado : 1}).where(eq(inventario.id,data.item_id_art));
+        }
+        catch(error){
+            if (error instanceof LibsqlError) {
+                console.log(error);
+            }
             return fail(500, { error });
         }
 
         return { success: true };
     }
 }
-
-
- export async function POST({ request }) {
-    try {
-      const item = await request.json();
-      const { id, nombreRecibe, apellidoRecibe, articuloSolicitado, cantidad, descripcion, fechaSolicitud, fechaDevolucion } = item;
-  
-      // Usa Drizzle ORM para actualizar el pedido en la base de datos
-      const result = await db.inventario.update({
-        where: { id },
-        data: {
-          nombreRecibe,
-          apellidoRecibe,
-          articuloSolicitado,
-          cantidad,
-          descripcion,
-          fechaSolicitud,
-          fechaDevolucion
-        }
-      });
-  
-      return json({ success: true, message: 'Item updated successfully', result });
-    } catch (error) {
-      return json({ success: false, message: 'Error updating item', error: error.message }, { status: 500 });
-    }
-  }
-   simon prueba */

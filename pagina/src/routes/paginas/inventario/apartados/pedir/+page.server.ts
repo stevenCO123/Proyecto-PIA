@@ -45,7 +45,8 @@ export const actions = {
 
         if (selecion && selecion.length > 0) {
             docente_prestador = selecion[0].docente_id;
-            return { selecion, docente_sele: true, salon: salon_sele }
+            const docente_nombre = selecion[0].docente_nom + " " + selecion[0].docente_ape;
+            return { selecion, docente_nombre, docente_sele: true, salon: salon_sele }
         }
     },
 

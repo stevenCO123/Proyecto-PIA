@@ -2,6 +2,7 @@
     export let data;
     export let form;
     export let pag_ver;
+    export let pag_gestionar;
     
     /* simon
     import { onMount } from 'svelte';
@@ -116,12 +117,41 @@
     <p>no hay resultados para su filtro</p>
 {/if}
 <br>
-<form action="" method="post" class="gestion">
-    <table class="inventario">
-        <tbody>
-            {#if !form?.filtracion}
-                
-                    Ingrese los campos que desea conocer en el inventario.
+
+{#if pag_ver}
+    <table class="inventario"><tbody>
+        {#if !form?.filtracion}
+            Ingrese los campos que desea conocer en el inventario.
+        {/if}
+        {#if form?.filtracion}
+            <tr>
+                <th>nombre del articulo</th>
+                <th>Cantidad</th>
+                <th>Lugar del articulo</th>
+                <th>Tipo de articulo</th>
+                <th>condicion del articulo</th>
+                <th>estado de prestamo</th>
+            </tr>
+
+            {#each form?.filtro as item}
+                <tr>
+                    <td>{item.nombre_art}</td>
+                    <td>{item.cantidad}</td>
+                    <td>{item.lugar_des}</td>
+                    <td>{item.tipo_des}</td>
+                    <td>{item.condicion_des}</td>
+                    <td>{item.estado_des}</td>
+                </tr>
+            {/each}
+        {/if}
+    </tbody></table>
+{/if}
+
+{#if pag_gestionar}
+    <form action="" method="post" class="gestion">
+        <table class="inventario"><tbody>
+            {#if !form?.filtracion} 
+                Ingrese los campos que desea conocer en el inventario.
             {/if}
             {#if form?.filtracion}
                 <tr>
@@ -135,69 +165,23 @@
 
                 {#each form?.filtro as item}
                     <tr>
+                        <input type="hidden" name="id_articulo" value={item.id}>
+                        <input type= "hidden" name="cambio" value ={"false"}>
                         <td>
-                        <input  type="text" name="nomart" bind:value={item.nombre_art} />
+                            <input type="text" name="nomart" value={item.nombre_art}/>
                         </td>
                         <td>
-                            <input type="number" name="caninv" bind:value={item.cantidad} />
+                            <input type="number" name="caninv" value={item.cantidad} />
                         </td>
-                        <td>
-                            {item.lugar_des}
-                        </td>
-                        <td>
-                            {item.tipo_des}
-                        </td>
-                        <td>
-                            {item.condicion_des}
-                        </td>
-                        <td>
-                            {item.estado_des}   
-                        </td>
+                        <td>{item.lugar_des}</td>
+                        <td>{item.tipo_des}</td>
+                        <td>{item.condicion_des}</td>
+                        <td>{item.estado_des}</td>
                     </tr>
                 {/each}
+                <br>
+                <input id="botones" type="submit" value="Enviar"/>
             {/if}
-        </tbody>      
-        <br>
-        <input id="botones" type="submit" value="Enviar"/>
-    </table> 
-</form>
-
-<!--
-<table class="inventario">
-    <tbody>
-      <tr>
-        <th>Solicitante</th>
-        <th>Articulo solicitado</th>
-        <th>Cantidad solicitada</th>
-        <th>Razon</th>
-        <th>Fecha solicitud</th>
-        <th>Fecha devolucion propuesta</th>
-      </tr>
-  
-      {#each data.pedidos as item, index}
-        <tr>
-          <td>
-            <input type="text" bind:value={item.nombreRecibe} />
-            <input type="text" bind:value={item.apellidoRecibe} />
-          </td>
-          <td><input type="text" bind:value={item.articuloSolicitado} /></td>
-          <td><input type="number" bind:value={item.cantidad} /></td>
-          <td><input type="text" bind:value={item.descripcion} /></td>
-          <td>
-            <input type="date" bind:value={item.fechaSolicitud} />
-          </td>
-          <td>
-            <input type="date" bind:value={item.fechaDevolucion} />
-          </td>
-          <td>
-            <form action="?/">
-                <button on:click={() => updateItem(item)} class="botones">
-                    Guardar cambios
-                </button>
-            </form>
-          </td>
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-  -->
+        </tbody></table> 
+    </form>
+{/if}

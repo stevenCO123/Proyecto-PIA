@@ -40,8 +40,7 @@ export const prestamos = sqliteTable("Prestamos", {
 	idEstado: integer("id_estado").references(() => estados.id),
 	descripcion: text("descripcion", { length: 100 }),
 	fechaSolicitud: integer("fecha_Solicitud"),
-	fechaDevueltaPropuesta: integer("fecha_devuelta_propuesta"),
-	fechaDevueltaReal: integer("fecha_devuelta_real"),
+	fechaDevueltaPropuesta: integer("fecha_devuelta_propuesta")
 });
 
 export const encargados = sqliteTable("encargados", {
