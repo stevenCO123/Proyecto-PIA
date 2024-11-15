@@ -3,6 +3,7 @@ import { condicion, docentes, encargados, estados, inventario, lugares, prestamo
 import { eq, and, like, } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
 import { LibsqlError } from '@libsql/client';
+import { ca } from "date-fns/locale";
 
 let salon_usuario: any;
 
@@ -138,5 +139,34 @@ export const actions = {
         }
 
         return { success: true };
+    },
+    enviar_cambios: async ({request}) => {
+        const data = await request.formData();
+        const id_articulo = data.getAll("id_articulo");
+        const cambio = data.getAll("cambio");
+        const nomart = data.getAll("nomart");
+        const cant = data.getAll("cant");
+
+        for (let i = 0; i < cambio.length; i++) {
+            if (cambio[i] === 'true'){
+                try{
+                    await db
+                    .update(inventario)
+                    .set({
+                        cantidad : parseInt(cant[i] as string),
+                        nombreArt: nomart[i] as string
+                    })
+                    .where(eq(inventario.id,id_articulo[i]));
+                }
+                catch(error){
+                    if (error instanceof LibsqlError) {
+                        console.log(error);
+                    }
+                    return fail(500, { error });
+                }
+        
+                return { success: true };
+            }
+        }
     }
 }

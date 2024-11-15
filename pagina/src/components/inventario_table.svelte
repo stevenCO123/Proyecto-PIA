@@ -3,37 +3,11 @@
     export let form;
     export let pag_ver;
     export let pag_gestionar;
-    
-    /* simon
-    import { onMount } from 'svelte';
-  import { fetch } from '$app/stores';
-    // Función para actualizar la base de datos (backend)
-  async function updateItem(item: any) {
-    try {
-      const response = await fetch('/api/update-pedido', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(item) // Enviamos el item actualizado
-      });
 
-      if (!response.ok) {
-        throw new Error('Failed to update item');
-      }
-
-      const result = await response.json();
-      console.log('Update success:', result);
-    } catch (error) {
-      console.error('Error updating item:', error);
+    function cambiar_valor(index) { 
+        form.filtro[index].cambio = true; 
     }
-  }
-  */
 
-  function enviarFormulario(event: Event) {
-    event.preventDefault(); // Evita el comportamiento predeterminado
-    (event.currentTarget as HTMLSelectElement).form?.submit(); //envía el formulario
-  }
 </script>
 
 <form
@@ -103,12 +77,12 @@
     </label>
 <br>
 <br>
-    <input id="boton" type="submit" value="ingresar" />
+    <input id="boton" type="submit" value="ingresar"/>
 </form>
 
 {#if form?.filtracion}
     <form action="?/quitar">
-        <input id="boton" type="submit" value="quitar filtro" />
+        <input id="boton" type="submit" value="quitar filtro"/>
     </form>
     <br>
 {/if}
@@ -148,8 +122,13 @@
 {/if}
 
 {#if pag_gestionar}
-    <form action="" method="post" class="gestion">
+    <form action="?/enviar_cambios" method="post" class="gestion">
         <table class="inventario"><tbody>
+            {#if form?.success}
+            Cambios enviados con exito
+            <br>
+            <br>
+            {/if}
             {#if !form?.filtracion} 
                 Ingrese los campos que desea conocer en el inventario.
             {/if}
@@ -163,15 +142,15 @@
                     <th>estado de prestamo</th>
                 </tr>
 
-                {#each form?.filtro as item}
+                {#each form?.filtro as item, index}
                     <tr>
                         <input type="hidden" name="id_articulo" value={item.id}>
-                        <input type= "hidden" name="cambio" value ={"false"}>
+                        <input type= "hidden" name="cambio" value ={item.cambio ? 'true' : 'false'}>
                         <td>
-                            <input type="text" name="nomart" value={item.nombre_art}/>
+                            <input type="text" name="nomart" value={item.nombre_art} on:change={() => cambiar_valor(index)}/>
                         </td>
                         <td>
-                            <input type="number" name="caninv" value={item.cantidad} />
+                            <input type="number" name="cant" value={item.cantidad} on:change={() => cambiar_valor(index)} />
                         </td>
                         <td>{item.lugar_des}</td>
                         <td>{item.tipo_des}</td>
