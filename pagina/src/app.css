@@ -133,3 +133,10 @@ width: 100%;
 .inventario td{
     background-color: white;
 }
+.inputos{
+    border:none;
+}
+
+.inputos:hover{
+    background-color: rgb(241, 237, 237);
+}

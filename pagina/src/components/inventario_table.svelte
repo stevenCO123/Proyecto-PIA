@@ -3,32 +3,6 @@
     export let form;
     export let pag_ver;
     export let pag_gestionar;
-    
-    /* simon
-    import { onMount } from 'svelte';
-  import { fetch } from '$app/stores';
-    // Función para actualizar la base de datos (backend)
-  async function updateItem(item: any) {
-    try {
-      const response = await fetch('/api/update-pedido', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(item) // Enviamos el item actualizado
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to update item');
-      }
-
-      const result = await response.json();
-      console.log('Update success:', result);
-    } catch (error) {
-      console.error('Error updating item:', error);
-    }
-  }
-  */
 
   function enviarFormulario(event: Event) {
     event.preventDefault(); // Evita el comportamiento predeterminado
@@ -168,10 +142,10 @@
                         <input type="hidden" name="id_articulo" value={item.id}>
                         <input type= "hidden" name="cambio" value ={"false"}>
                         <td>
-                            <input type="text" name="nomart" value={item.nombre_art}/>
+                            <input type="text" name="nomart" value={item.nombre_art} class="inputos"/>
                         </td>
                         <td>
-                            <input type="number" name="caninv" value={item.cantidad} />
+                            <input type="number" name="caninv" value={item.cantidad} class="inputos" />
                         </td>
                         <td>{item.lugar_des}</td>
                         <td>{item.tipo_des}</td>
